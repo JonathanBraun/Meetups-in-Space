@@ -1,0 +1,22 @@
+<h1><%= @meetup.name %></h1>
+
+<ul>
+  <li>Time: <%= @meetup.time %></li>
+  <li>Duration: <%= @meetup.duration %></li>
+  <li>Location: <%= @meetup.location %></li>
+  <li>Date: <%= @meetup.date %></li>
+  <li>Description: <%= @meetup.description %></li>
+  <% if @meetup.creator_id.is_a? Integer %>
+    <li>Creator Name: <%= User.find(@meetup.creator_id).username %></li>
+  <% end %>
+</ul>
+<h3>Attendees</h3>
+<ul>
+  <% @attendees.each do |attendee| %>
+  <% @user = User.find(attendee.user_id) %>
+    <li><%= @user.username %></li>
+  <% end %>
+</ul>
+<form action="" method="post">
+  <button> Join </button>
+</form>
